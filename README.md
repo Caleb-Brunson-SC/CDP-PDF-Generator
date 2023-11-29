@@ -49,3 +49,7 @@
 * JavaFx docs: https://fxdocs.github.io/docs/html5/#_best_practices
 * iText sourceforge: https://sourceforge.net/projects/itext/
 * iText tutorialspoint: https://www.tutorialspoint.com/itext/itext_creating_pdf_document.htm
+* JavaFX simple paint program: https://gist.github.com/abdelaziz321/e9932bd15e4b263c3dae08644c61600c
+
+## Hours
+1. 11/29/2023: 
