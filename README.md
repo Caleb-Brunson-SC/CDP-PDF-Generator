@@ -43,3 +43,9 @@
   * Customer's initals
 * Installation overview agreement
 * Notice of cancellation
+
+## NOTES
+* Create executable file: https://dev.to/rohitk570/create-an-executable-jar-file-on-vs-code-n-command-line-154b
+* JavaFx docs: https://fxdocs.github.io/docs/html5/#_best_practices
+* iText sourceforge: https://sourceforge.net/projects/itext/
+* iText tutorialspoint: https://www.tutorialspoint.com/itext/itext_creating_pdf_document.htm
