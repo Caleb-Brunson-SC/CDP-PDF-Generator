@@ -23,9 +23,7 @@ public class Main extends Application {
   @Override
   public void start(Stage primary_stage) throws Exception {
     // Creating a VBox as the root.
-    VBox vbox_root = new VBox(5); // 5 is spacing between children
-
-    // Setting the padding of the VBox.
+    VBox vbox_root = new VBox(5); // 5 is spacing between children.
     vbox_root.setPadding(new Insets(5));
 
     // Creating Hbox and text for program, company, and developer information.
@@ -43,8 +41,25 @@ public class Main extends Application {
     program_information.getChildren().add(text_program_information);
     program_information.setAlignment(Pos.CENTER);
 
+    // Creating GridPane for user input Labels and TextFields.
+    GridPane grid_pane = new GridPane();
+    grid_pane.setPadding(new Insets(5, 5, 5, 5));
+    grid_pane.setVgap(5); // Sets vertical gap between columns.
+    grid_pane.setHgap(5); // Sets horizontal gap between rows.
+    grid_pane.setAlignment(Pos.CENTER);
+
+    // Creating Labels and Textfields for user input.
+    Label label_customer_first_name = new Label("Customer's First Name");
+    TextField text_field_customer_first_name = new TextField();
+
+    Label label_customer_last_name = new Label("Customer's Last Name");
+    TextField text_field_customer_last_name = new TextField();
+
+    // Arranging all the nodes in the GridPane.
+    grid_pane.addRow(0, label_customer_first_name, text_field_customer_first_name);
+
     // Add all children to the VBox container (root).
-    vbox_root.getChildren().addAll(program_title, program_information);
+    vbox_root.getChildren().addAll(program_title, program_information, grid_pane);
 
     // Creating a scene object.
     Scene scene = new Scene(vbox_root, 700, 500);
