@@ -16,6 +16,9 @@ public class PDFGenerator {
   public String job_options;
   public String job_notes;
   public String contract_amount;
+  public String materials_cost;
+  public String labor_cost;
+  public String discount_applied;
   public String sales_tax;
   public String deposit_amount;
   public String remaining_balance;
