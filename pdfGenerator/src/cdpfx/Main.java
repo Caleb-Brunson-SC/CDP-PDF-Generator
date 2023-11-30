@@ -150,7 +150,7 @@ public class Main extends Application {
     grid_pane_two.setVgap(10); // Sets vertical gap between rows.
     grid_pane_two.setHgap(10); // Sets horizontal gap between columns.
 
-    // Creating labels and text fields for financial information.
+    // Creating labels and text fields for further information.
     // Contract amount.
     Label label_contract_amount = new Label("Contract Amount");
     label_contract_amount.setFont(user_input_font);
@@ -171,11 +171,17 @@ public class Main extends Application {
     label_remaining_balance.setFont(user_input_font);
     TextField text_field_remaining_balance = new TextField();
 
+    // CDP Fencing Authorized Representative (print name).
+    Label label_authorized_rep_name = new Label("CDP Authorized Representative (full name)");
+    label_authorized_rep_name.setFont(user_input_font);
+    TextField text_field_authorized_rep_name = new TextField();
+
     // Adding rows to the second grid pane.
     grid_pane_two.addRow(0, label_contract_amount, text_field_contract_amount);
     grid_pane_two.addRow(1, label_sales_tax, text_field_sales_tax);
     grid_pane_two.addRow(2, label_deposit_amount, text_field_deposit_amount);
     grid_pane_two.addRow(3, label_remaining_balance, text_field_remaining_balance);
+    grid_pane_two.addRow(4, label_authorized_rep_name, text_field_authorized_rep_name);
 
     // Add all children to the VBox_one layout.
     vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
