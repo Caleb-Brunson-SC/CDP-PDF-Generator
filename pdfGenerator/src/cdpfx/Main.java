@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -23,6 +25,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
   public static Stage current_stage;
+  // Will need to set these in their respective methods.
+  public Boolean has_created_fence_diagram = true; // Default value.
+  public Boolean has_created_signature = true; // Default value.
 
   @Override
   public void start(Stage primary_stage) throws Exception {
@@ -210,9 +215,21 @@ public class Main extends Application {
     button_create_pdf.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        // Checking if fence diagram has not been created.
+        // Checking if fence diagram has been created.
+        if (!has_created_fence_diagram) {
+          Alert alert = new Alert(AlertType.ERROR);
+          alert.show();
+          return;
+        }
+        // Checking if signature has been created.
+        if (!has_created_signature) {
+          Alert alert = new Alert(AlertType.ERROR);
+          alert.show();
+          return;
+        }
 
-        // Checking if signature has not been created.
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.show();
       }
     });
 
@@ -223,6 +240,7 @@ public class Main extends Application {
     grid_pane_two.addRow(3, label_remaining_balance, text_field_remaining_balance);
     grid_pane_two.addRow(4, label_authorized_rep_name, text_field_authorized_rep_name);
     grid_pane_two.addRow(5, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
+    grid_pane_two.addRow(6, label_create_pdf, button_create_pdf);
 
     // Add all children to the VBox_one layout.
     vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
