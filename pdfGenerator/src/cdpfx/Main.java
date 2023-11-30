@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -24,8 +26,8 @@ public class Main extends Application {
   @Override
   public void start(Stage primary_stage) throws Exception {
     // Creating a VBox container.
-    VBox vbox = new VBox(5); // 5 is spacing between children.
-    vbox.setPadding(new Insets(5));
+    VBox vbox_one = new VBox(5); // 5 is spacing between children.
+    vbox_one.setPadding(new Insets(5));
 
     // Creating Hbox and text for program, company, and developer information.
     HBox program_title = new HBox();
@@ -80,12 +82,12 @@ public class Main extends Application {
     label_service_address_city_state_zip.setFont(user_input_font);
     TextField text_field_service_address_city_state_zip = new TextField();
 
-    // Customer service municipality
+    // Customer service municipality.
     Label label_service_address_municipality = new Label("Municipality");
     label_service_address_municipality.setFont(user_input_font);
     TextField text_field_service_address_municipality = new TextField();
 
-    // Customer's email address
+    // Customer's email address.
     Label label_customer_email = new Label("Customer's E-mail Address");
     label_customer_email.setFont(user_input_font);
     TextField text_field_customer_email = new TextField();
@@ -99,14 +101,44 @@ public class Main extends Application {
     grid_pane.addRow(5, label_service_address_municipality, text_field_service_address_municipality);
     grid_pane.addRow(6, label_customer_email, text_field_customer_email);
 
-    // Add all children to the VBox container.
-    vbox.getChildren().addAll(program_title, developer_information, program_information, grid_pane);
+    // Creating Vbox for checkboxes and text area fields.
+    VBox vbox_two = new VBox(10); // Spacing = 10.
+    vbox_two.setPadding(new Insets(5));
+
+    // Checkbox: permit required?
+    CheckBox checkbox_permit_required = new CheckBox("Permit Required?");
+    checkbox_permit_required.setFont(user_input_font);
+
+    // Checkbox: homeowner to obtain permit?
+    CheckBox checkbox_homeowner_permit = new CheckBox("Homeowner to Obtain Permit?");
+    checkbox_homeowner_permit.setFont(user_input_font);
+
+    // Checkbox: CDP Fencing to obtain permit?
+    CheckBox checkbox_cdp_permit = new CheckBox("CDP Fencing to Obtain Permit?");
+    checkbox_cdp_permit.setFont(user_input_font);
+
+    // Checkbox: plot plan or survey available?
+    CheckBox checkbox_plot_survey_available = new CheckBox("Plot Plan or Survey Available?");
+    checkbox_plot_survey_available.setFont(user_input_font);
+
+    // TextArea: product specifications.
+    Label label_product_specifications = new Label("Product Specifications");
+    label_product_specifications.setFont(user_input_font);
+    TextArea text_area_product_specifications = new TextArea();
+    text_area_product_specifications.setWrapText(true);
+
+    // Adding checkboxes and text area children to VBox_two layout.
+    vbox_two.getChildren().addAll(checkbox_permit_required, checkbox_homeowner_permit, checkbox_cdp_permit,
+        checkbox_plot_survey_available, label_product_specifications, text_area_product_specifications);
+
+    // Add all children to the VBox_one layout.
+    vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane, vbox_two);
 
     // Creating ScrollPane with scrollbar.
     ScrollPane scroll_pane = new ScrollPane();
 
-    // Adding Vbox container to ScrollPane content.
-    scroll_pane.setContent(vbox);
+    // Adding VBox_one layout to ScrollPane content.
+    scroll_pane.setContent(vbox_one);
 
     // Initalizing root BorderPane with scroll_pane content.
     root = new BorderPane(scroll_pane);
