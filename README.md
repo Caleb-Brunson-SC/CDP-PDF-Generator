@@ -51,6 +51,7 @@
 * iText tutorialspoint: https://www.tutorialspoint.com/itext/itext_creating_pdf_document.htm
 * JavaFX simple paint program: https://gist.github.com/abdelaziz321/e9932bd15e4b263c3dae08644c61600c
 * Apache pdfBox: https://github.com/apache/pdfbox
+* pdfBox add dependencies in VSCode: https://www.youtube.com/watch?v=Kqs84TDnjSE&ab_channel=BoostMyTool
 
 
 ## Hours
