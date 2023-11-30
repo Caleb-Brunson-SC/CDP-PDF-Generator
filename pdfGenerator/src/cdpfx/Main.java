@@ -10,7 +10,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -23,8 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-  // BorderPane root
-  public BorderPane root;
   public static Stage current_stage;
 
   @Override
@@ -213,7 +210,7 @@ public class Main extends Application {
     scroll_pane.setContent(vbox_one);
 
     // Initalizing root BorderPane with scroll_pane content.
-    root = new BorderPane(scroll_pane);
+    BorderPane root = new BorderPane(scroll_pane);
 
     // Creating a scene object.
     Scene scene = new Scene(root, 700, 500);
@@ -226,8 +223,9 @@ public class Main extends Application {
   }
 
   public void createSignature() {
-    Stage signature_stage = new Stage();
     BorderPane root = new BorderPane();
+
+    Stage signature_stage = new Stage();
     Scene scene = new Scene(root, 700, 500);
     signature_stage.setScene(scene);
     signature_stage.show();
