@@ -96,6 +96,17 @@ public class Main extends Application {
     label_customer_email.setFont(user_input_font);
     TextField text_field_customer_email = new TextField();
 
+    // Creating Button to open new Scene for fence diagram.
+    Label label_draw_fence_diagram = new Label("Draw Fence Diagram");
+    label_draw_fence_diagram.setFont(user_input_font);
+    Button button_draw_fence_diagram = new Button("Open Diagram Maker");
+    button_draw_fence_diagram.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        createFenceDiagram();
+      }
+    });
+
     // Arranging all the nodes in the GridPane.
     grid_pane_one.addRow(0, label_proposal_creation_date, text_field_proposal_creation_date);
     grid_pane_one.addRow(1, label_customer_first_name, text_field_customer_first_name);
@@ -104,6 +115,7 @@ public class Main extends Application {
     grid_pane_one.addRow(4, label_service_address_city_state_zip, text_field_service_address_city_state_zip);
     grid_pane_one.addRow(5, label_service_address_municipality, text_field_service_address_municipality);
     grid_pane_one.addRow(6, label_customer_email, text_field_customer_email);
+    grid_pane_one.addRow(7, label_draw_fence_diagram, button_draw_fence_diagram);
 
     // Creating Vbox for checkboxes and text area fields.
     VBox vbox_two = new VBox(10); // Spacing = 10.
@@ -220,6 +232,16 @@ public class Main extends Application {
 
     // Displaying the contents of the stage.
     primary_stage.show();
+  }
+
+  public void createFenceDiagram() {
+    BorderPane root = new BorderPane();
+
+    Stage fence_diagram_stage = new Stage();
+    Scene scene = new Scene(root, 700, 500);
+    fence_diagram_stage.setScene(scene);
+    fence_diagram_stage.show();
+    // Main.current_stage.close();
   }
 
   public void createSignature() {
