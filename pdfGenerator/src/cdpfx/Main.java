@@ -76,6 +76,11 @@ public class Main extends Application {
     label_service_address_city_state_zip.setFont(user_input_font);
     TextField text_field_service_address_city_state_zip = new TextField();
 
+    // Customer service municipality
+    Label label_service_address_municipality = new Label("Municipality");
+    label_service_address_municipality.setFont(user_input_font);
+    TextField text_field_service_address_municipality = new TextField();
+
     // Customer's email address
     Label label_customer_email = new Label("Customer's E-mail Address");
     label_customer_email.setFont(user_input_font);
@@ -87,7 +92,8 @@ public class Main extends Application {
     grid_pane.addRow(2, label_customer_last_name, text_field_customer_last_name);
     grid_pane.addRow(3, label_service_address, text_field_service_address);
     grid_pane.addRow(4, label_service_address_city_state_zip, text_field_service_address_city_state_zip);
-    grid_pane.addRow(5, label_customer_email, text_field_customer_email);
+    grid_pane.addRow(5, label_service_address_municipality, text_field_service_address_municipality);
+    grid_pane.addRow(6, label_customer_email, text_field_customer_email);
 
     // Add all children to the VBox container (root).
     vbox_root.getChildren().addAll(program_title, program_information, grid_pane);
