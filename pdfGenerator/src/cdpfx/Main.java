@@ -7,6 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,12 +21,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+  // BorderPane root
+  public BorderPane root;
 
   @Override
   public void start(Stage primary_stage) throws Exception {
-    // Creating a VBox as the root.
-    VBox vbox_root = new VBox(5); // 5 is spacing between children.
-    vbox_root.setPadding(new Insets(5));
+    // Creating a VBox container.
+    VBox vbox = new VBox(5); // 5 is spacing between children.
+    vbox.setPadding(new Insets(5));
 
     // Creating Hbox and text for program, company, and developer information.
     HBox program_title = new HBox();
@@ -32,21 +36,24 @@ public class Main extends Application {
     text_program_title.setText("Proposal for Fencing Installation");
     text_program_title.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 25));
     program_title.getChildren().add(text_program_title);
-    program_title.setAlignment(Pos.CENTER);
+
+    HBox developer_information = new HBox();
+    Text text_developer_information = new Text();
+    text_developer_information.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
+    text_developer_information.setText("Program developed by Caleb Brunson (Github: Caleb-Brunson-SC).");
+    developer_information.getChildren().add(text_developer_information);
 
     HBox program_information = new HBox();
     Text text_program_information = new Text();
-    text_program_information.setText("Program developed for CDP Fencing by Caleb Brunson (Github: Caleb-Brunson-SC).");
+    text_program_information.setText("Developed for use by CDP Fencing.");
     text_program_information.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
     program_information.getChildren().add(text_program_information);
-    program_information.setAlignment(Pos.CENTER);
 
     // Creating GridPane for user input Labels and TextFields.
     GridPane grid_pane = new GridPane();
     grid_pane.setPadding(new Insets(25, 5, 5, 5));
     grid_pane.setVgap(10); // Sets vertical gap between rows.
     grid_pane.setHgap(10); // Sets horizontal gap between columns.
-    grid_pane.setAlignment(Pos.CENTER);
 
     // Creating Labels and Textfields for user input.
     Font user_input_font = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15);
@@ -95,11 +102,20 @@ public class Main extends Application {
     grid_pane.addRow(5, label_service_address_municipality, text_field_service_address_municipality);
     grid_pane.addRow(6, label_customer_email, text_field_customer_email);
 
-    // Add all children to the VBox container (root).
-    vbox_root.getChildren().addAll(program_title, program_information, grid_pane);
+    // Add all children to the VBox container.
+    vbox.getChildren().addAll(program_title, developer_information, program_information, grid_pane);
+
+    // Creating ScrollPane with scrollbar.
+    ScrollPane scroll_pane = new ScrollPane();
+
+    // Adding Vbox container to ScrollPane content.
+    scroll_pane.setContent(vbox);
+
+    // Initalizing root BorderPane with scroll_pane content.
+    root = new BorderPane(scroll_pane);
 
     // Creating a scene object.
-    Scene scene = new Scene(vbox_root, 700, 500);
+    Scene scene = new Scene(root, 700, 500);
 
     // Adding the scene to the stage.
     primary_stage.setScene(scene);
