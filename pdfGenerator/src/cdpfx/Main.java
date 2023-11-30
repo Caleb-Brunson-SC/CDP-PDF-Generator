@@ -48,11 +48,11 @@ public class Main extends Application {
     text_program_information.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
     program_information.getChildren().add(text_program_information);
 
-    // Creating GridPane for user input Labels and TextFields.
-    GridPane grid_pane = new GridPane();
-    grid_pane.setPadding(new Insets(25, 5, 5, 5));
-    grid_pane.setVgap(10); // Sets vertical gap between rows.
-    grid_pane.setHgap(10); // Sets horizontal gap between columns.
+    // Creating GridPane for customer information input Labels and TextFields.
+    GridPane grid_pane_one = new GridPane();
+    grid_pane_one.setPadding(new Insets(25, 5, 5, 5));
+    grid_pane_one.setVgap(10); // Sets vertical gap between rows.
+    grid_pane_one.setHgap(10); // Sets horizontal gap between columns.
 
     // Creating Labels and Textfields for user input.
     Font user_input_font = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15);
@@ -93,13 +93,13 @@ public class Main extends Application {
     TextField text_field_customer_email = new TextField();
 
     // Arranging all the nodes in the GridPane.
-    grid_pane.addRow(0, label_proposal_creation_date, text_field_proposal_creation_date);
-    grid_pane.addRow(1, label_customer_first_name, text_field_customer_first_name);
-    grid_pane.addRow(2, label_customer_last_name, text_field_customer_last_name);
-    grid_pane.addRow(3, label_service_address, text_field_service_address);
-    grid_pane.addRow(4, label_service_address_city_state_zip, text_field_service_address_city_state_zip);
-    grid_pane.addRow(5, label_service_address_municipality, text_field_service_address_municipality);
-    grid_pane.addRow(6, label_customer_email, text_field_customer_email);
+    grid_pane_one.addRow(0, label_proposal_creation_date, text_field_proposal_creation_date);
+    grid_pane_one.addRow(1, label_customer_first_name, text_field_customer_first_name);
+    grid_pane_one.addRow(2, label_customer_last_name, text_field_customer_last_name);
+    grid_pane_one.addRow(3, label_service_address, text_field_service_address);
+    grid_pane_one.addRow(4, label_service_address_city_state_zip, text_field_service_address_city_state_zip);
+    grid_pane_one.addRow(5, label_service_address_municipality, text_field_service_address_municipality);
+    grid_pane_one.addRow(6, label_customer_email, text_field_customer_email);
 
     // Creating Vbox for checkboxes and text area fields.
     VBox vbox_two = new VBox(10); // Spacing = 10.
@@ -127,12 +127,59 @@ public class Main extends Application {
     TextArea text_area_product_specifications = new TextArea();
     text_area_product_specifications.setWrapText(true);
 
+    // TextArea: job options.
+    Label label_job_options = new Label("Job Options");
+    label_job_options.setFont(user_input_font);
+    TextArea text_area_job_options = new TextArea();
+    text_area_job_options.setWrapText(true);
+
+    // TextArea: job notes.
+    Label label_job_notes = new Label("Job Notes");
+    label_job_notes.setFont(user_input_font);
+    TextArea text_area_job_notes = new TextArea();
+    text_area_job_notes.setWrapText(true);
+
     // Adding checkboxes and text area children to VBox_two layout.
     vbox_two.getChildren().addAll(checkbox_permit_required, checkbox_homeowner_permit, checkbox_cdp_permit,
-        checkbox_plot_survey_available, label_product_specifications, text_area_product_specifications);
+        checkbox_plot_survey_available, label_product_specifications, text_area_product_specifications,
+        label_job_options, text_area_job_options, label_job_notes, text_area_job_notes);
+
+    // Creating second gridpane for financial information.
+    GridPane grid_pane_two = new GridPane();
+    grid_pane_two.setPadding(new Insets(25, 5, 5, 5));
+    grid_pane_two.setVgap(10); // Sets vertical gap between rows.
+    grid_pane_two.setHgap(10); // Sets horizontal gap between columns.
+
+    // Creating labels and text fields for financial information.
+    // Contract amount.
+    Label label_contract_amount = new Label("Contract Amount");
+    label_contract_amount.setFont(user_input_font);
+    TextField text_field_contract_amount = new TextField();
+
+    // Sales tax.
+    Label label_sales_tax = new Label("Sales Tax");
+    label_sales_tax.setFont(user_input_font);
+    TextField text_field_sales_tax = new TextField();
+
+    // Deposit amount.
+    Label label_deposit_amount = new Label("Deposit Amount");
+    label_deposit_amount.setFont(user_input_font);
+    TextField text_field_deposit_amount = new TextField();
+
+    // Remaining balance.
+    Label label_remaining_balance = new Label("Remaining Balance");
+    label_remaining_balance.setFont(user_input_font);
+    TextField text_field_remaining_balance = new TextField();
+
+    // Adding rows to the second grid pane.
+    grid_pane_two.addRow(0, label_contract_amount, text_field_contract_amount);
+    grid_pane_two.addRow(1, label_sales_tax, text_field_sales_tax);
+    grid_pane_two.addRow(2, label_deposit_amount, text_field_deposit_amount);
+    grid_pane_two.addRow(3, label_remaining_balance, text_field_remaining_balance);
 
     // Add all children to the VBox_one layout.
-    vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane, vbox_two);
+    vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
+        grid_pane_two);
 
     // Creating ScrollPane with scrollbar.
     ScrollPane scroll_pane = new ScrollPane();
