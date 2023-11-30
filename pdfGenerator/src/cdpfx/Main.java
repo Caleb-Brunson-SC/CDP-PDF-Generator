@@ -160,10 +160,16 @@ public class Main extends Application {
     TextArea text_area_job_notes = new TextArea();
     text_area_job_notes.setWrapText(true);
 
+    // Text notice for cost fields and calculation.
+    Text text_cost_calculation = new Text(
+        "Note: Contract Amount will be calculated from Materials Cost, Labor Cost, and Discount. Remaining Amount is equal to Contract Amount minus Deposit Amount.");
+    text_cost_calculation.setFont(user_input_font);
+    text_cost_calculation.setWrappingWidth(650);
+
     // Adding checkboxes and text area children to VBox_two layout.
     vbox_two.getChildren().addAll(checkbox_permit_required, checkbox_homeowner_permit, checkbox_cdp_permit,
         checkbox_plot_survey_available, label_product_specifications, text_area_product_specifications,
-        label_job_options, text_area_job_options, label_job_notes, text_area_job_notes);
+        label_job_options, text_area_job_options, label_job_notes, text_area_job_notes, text_cost_calculation);
 
     // Creating second gridpane for financial information.
     GridPane grid_pane_two = new GridPane();
@@ -172,10 +178,20 @@ public class Main extends Application {
     grid_pane_two.setHgap(10); // Sets horizontal gap between columns.
 
     // Creating labels and text fields for further information.
-    // Contract amount.
-    Label label_contract_amount = new Label("Contract Amount");
-    label_contract_amount.setFont(user_input_font);
-    TextField text_field_contract_amount = new TextField();
+    // Materials Cost
+    Label label_materials_cost = new Label("Materials Cost");
+    label_materials_cost.setFont(user_input_font);
+    TextField text_field_materials_cost = new TextField();
+
+    // Labor Cost
+    Label label_labor_cost = new Label("Labor Cost");
+    label_labor_cost.setFont(user_input_font);
+    TextField text_field_labor_cost = new TextField();
+
+    // Discount Applied
+    Label label_discount_applied = new Label("Discount Applied");
+    label_discount_applied.setFont(user_input_font);
+    TextField text_field_discount_applied = new TextField();
 
     // Sales tax.
     Label label_sales_tax = new Label("Sales Tax");
@@ -186,11 +202,6 @@ public class Main extends Application {
     Label label_deposit_amount = new Label("Deposit Amount");
     label_deposit_amount.setFont(user_input_font);
     TextField text_field_deposit_amount = new TextField();
-
-    // Remaining balance.
-    Label label_remaining_balance = new Label("Remaining Balance");
-    label_remaining_balance.setFont(user_input_font);
-    TextField text_field_remaining_balance = new TextField();
 
     // CDP Fencing Authorized Representative (print name).
     Label label_authorized_rep_name = new Label("CDP Authorized Representative (full name)");
@@ -234,13 +245,14 @@ public class Main extends Application {
     });
 
     // Adding rows to the second grid pane.
-    grid_pane_two.addRow(0, label_contract_amount, text_field_contract_amount);
-    grid_pane_two.addRow(1, label_sales_tax, text_field_sales_tax);
-    grid_pane_two.addRow(2, label_deposit_amount, text_field_deposit_amount);
-    grid_pane_two.addRow(3, label_remaining_balance, text_field_remaining_balance);
-    grid_pane_two.addRow(4, label_authorized_rep_name, text_field_authorized_rep_name);
-    grid_pane_two.addRow(5, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
-    grid_pane_two.addRow(6, label_create_pdf, button_create_pdf);
+    grid_pane_two.addRow(0, label_materials_cost, text_field_materials_cost);
+    grid_pane_two.addRow(1, label_labor_cost, text_field_labor_cost);
+    grid_pane_two.addRow(2, label_discount_applied, text_field_discount_applied);
+    grid_pane_two.addRow(3, label_sales_tax, text_field_sales_tax);
+    grid_pane_two.addRow(4, label_deposit_amount, text_field_deposit_amount);
+    grid_pane_two.addRow(5, label_authorized_rep_name, text_field_authorized_rep_name);
+    grid_pane_two.addRow(6, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
+    grid_pane_two.addRow(7, label_create_pdf, button_create_pdf);
 
     // Add all children to the VBox_one layout.
     vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
