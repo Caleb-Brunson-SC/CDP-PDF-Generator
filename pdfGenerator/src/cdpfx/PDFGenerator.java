@@ -20,4 +20,5 @@ public class PDFGenerator {
   public String deposit_amount;
   public String remaining_balance;
   public String cdp_authorized_representative_name;
+
 }

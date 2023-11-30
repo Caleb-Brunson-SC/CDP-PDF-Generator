@@ -203,6 +203,19 @@ public class Main extends Application {
       }
     });
 
+    // Creating create pdf button.
+    Label label_create_pdf = new Label("Create PDF");
+    label_create_pdf.setFont(user_input_font);
+    Button button_create_pdf = new Button("Create");
+    button_create_pdf.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        // Checking if fence diagram has not been created.
+
+        // Checking if signature has not been created.
+      }
+    });
+
     // Adding rows to the second grid pane.
     grid_pane_two.addRow(0, label_contract_amount, text_field_contract_amount);
     grid_pane_two.addRow(1, label_sales_tax, text_field_sales_tax);
