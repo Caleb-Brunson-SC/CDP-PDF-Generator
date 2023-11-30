@@ -50,6 +50,7 @@
 * iText sourceforge: https://sourceforge.net/projects/itext/
 * iText tutorialspoint: https://www.tutorialspoint.com/itext/itext_creating_pdf_document.htm
 * JavaFX simple paint program: https://gist.github.com/abdelaziz321/e9932bd15e4b263c3dae08644c61600c
+* Apache pdfBox: https://github.com/apache/pdfbox
 
 
 ## Hours
