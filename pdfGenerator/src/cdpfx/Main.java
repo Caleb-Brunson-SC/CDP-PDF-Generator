@@ -1,6 +1,8 @@
 package cdpfx;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -22,9 +25,13 @@ import javafx.stage.Stage;
 public class Main extends Application {
   // BorderPane root
   public BorderPane root;
+  public static Stage current_stage;
 
   @Override
   public void start(Stage primary_stage) throws Exception {
+    // Setting current_stage to primary_stage.
+    this.current_stage = primary_stage;
+
     // Creating a VBox container.
     VBox vbox_one = new VBox(5); // 5 is spacing between children.
     vbox_one.setPadding(new Insets(5));
@@ -176,12 +183,24 @@ public class Main extends Application {
     label_authorized_rep_name.setFont(user_input_font);
     TextField text_field_authorized_rep_name = new TextField();
 
+    // Creating Button to open new Scene for signing name.
+    Label label_sign_authorized_rep_name = new Label("CDP Authorized Representative (signature)");
+    label_sign_authorized_rep_name.setFont(user_input_font);
+    Button button_sign_authorized_rep_name = new Button("Sign Name");
+    button_sign_authorized_rep_name.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        createSignature();
+      }
+    });
+
     // Adding rows to the second grid pane.
     grid_pane_two.addRow(0, label_contract_amount, text_field_contract_amount);
     grid_pane_two.addRow(1, label_sales_tax, text_field_sales_tax);
     grid_pane_two.addRow(2, label_deposit_amount, text_field_deposit_amount);
     grid_pane_two.addRow(3, label_remaining_balance, text_field_remaining_balance);
     grid_pane_two.addRow(4, label_authorized_rep_name, text_field_authorized_rep_name);
+    grid_pane_two.addRow(5, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
 
     // Add all children to the VBox_one layout.
     vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
@@ -204,6 +223,15 @@ public class Main extends Application {
 
     // Displaying the contents of the stage.
     primary_stage.show();
+  }
+
+  public void createSignature() {
+    Stage signature_stage = new Stage();
+    BorderPane root = new BorderPane();
+    Scene scene = new Scene(root, 700, 500);
+    signature_stage.setScene(scene);
+    signature_stage.show();
+    // Main.current_stage.close();
   }
 
   public static void main(String[] args) {
