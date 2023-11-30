@@ -43,20 +43,51 @@ public class Main extends Application {
 
     // Creating GridPane for user input Labels and TextFields.
     GridPane grid_pane = new GridPane();
-    grid_pane.setPadding(new Insets(5, 5, 5, 5));
-    grid_pane.setVgap(5); // Sets vertical gap between columns.
-    grid_pane.setHgap(5); // Sets horizontal gap between rows.
+    grid_pane.setPadding(new Insets(25, 5, 5, 5));
+    grid_pane.setVgap(10); // Sets vertical gap between rows.
+    grid_pane.setHgap(10); // Sets horizontal gap between columns.
     grid_pane.setAlignment(Pos.CENTER);
 
     // Creating Labels and Textfields for user input.
+    Font user_input_font = Font.font("Verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15);
+
+    // Proposal creation date.
+    Label label_proposal_creation_date = new Label("Proposal Creation Date");
+    label_proposal_creation_date.setFont(user_input_font);
+    TextField text_field_proposal_creation_date = new TextField();
+
+    // Customer first name.
     Label label_customer_first_name = new Label("Customer's First Name");
+    label_customer_first_name.setFont(user_input_font);
     TextField text_field_customer_first_name = new TextField();
 
+    // Customer last name.
     Label label_customer_last_name = new Label("Customer's Last Name");
+    label_customer_last_name.setFont(user_input_font);
     TextField text_field_customer_last_name = new TextField();
 
+    // Customer service address.
+    Label label_service_address = new Label("Service Address");
+    label_service_address.setFont(user_input_font);
+    TextField text_field_service_address = new TextField();
+
+    // Customer service City, State, Zip Code.
+    Label label_service_address_city_state_zip = new Label("City, State, Zip Code");
+    label_service_address_city_state_zip.setFont(user_input_font);
+    TextField text_field_service_address_city_state_zip = new TextField();
+
+    // Customer's email address
+    Label label_customer_email = new Label("Customer's E-mail Address");
+    label_customer_email.setFont(user_input_font);
+    TextField text_field_customer_email = new TextField();
+
     // Arranging all the nodes in the GridPane.
-    grid_pane.addRow(0, label_customer_first_name, text_field_customer_first_name);
+    grid_pane.addRow(0, label_proposal_creation_date, text_field_proposal_creation_date);
+    grid_pane.addRow(1, label_customer_first_name, text_field_customer_first_name);
+    grid_pane.addRow(2, label_customer_last_name, text_field_customer_last_name);
+    grid_pane.addRow(3, label_service_address, text_field_service_address);
+    grid_pane.addRow(4, label_service_address_city_state_zip, text_field_service_address_city_state_zip);
+    grid_pane.addRow(5, label_customer_email, text_field_customer_email);
 
     // Add all children to the VBox container (root).
     vbox_root.getChildren().addAll(program_title, program_information, grid_pane);
