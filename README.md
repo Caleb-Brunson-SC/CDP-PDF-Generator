@@ -51,5 +51,56 @@
 * iText tutorialspoint: https://www.tutorialspoint.com/itext/itext_creating_pdf_document.htm
 * JavaFX simple paint program: https://gist.github.com/abdelaziz321/e9932bd15e4b263c3dae08644c61600c
 
+
 ## Hours
-1. 11/29/2023: 
+1. 11/29/2023: 4-5 7-8 8-9
+
+    // Creating a GridPane.
+    GridPane grid_pane_root = new GridPane();
+
+    // Setting the size for the GridPane.
+    grid_pane_root.setMinSize(400, 200);
+
+    // Setting the padding for the GridPane.
+    grid_pane_root.setPadding(new Insets(5, 5, 5, 5));
+
+    // Setting the vertical and horizontal gaps between the columns.
+    // grid_pane_root.setVgap(5);
+    // grid_pane_root.setHgap(5);
+
+    // Setting the GridPane alignment.
+    // grid_pane_root.setAlignment(Pos.CENTER);
+
+    // Creating text for program, company, and developer information.
+    Text program_title = new Text();
+    program_title.setText("Proposal for Fencing Installation");
+    program_title.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 25));
+
+    Text program_information = new Text();
+    program_information.setText("Program developed for CDP Fencing by Caleb Brunson (Github: Caleb-Brunson-SC).");
+    program_information.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
+
+    // Creating Labels and TextFields for input fields.
+    Label label_customer_first_name = new Label("Customer's First Name");
+    TextField text_field_customer_first_name = new TextField();
+
+    Label label_customer_last_name = new Label("Customer's Last Name");
+    TextField text_field_customer_last_name = new TextField();
+
+    // Arranging all the nodes in the GridPane.
+    grid_pane_root.addRow(0, program_title);
+    grid_pane_root.addRow(1, program_information);
+    grid_pane_root.addRow(2, label_customer_first_name, text_field_customer_first_name);
+
+    // Setting node alignments in the GridPane.
+    // GridPane.setHalignment(program_title, HPos.CENTER);
+    // GridPane.setHalignment(program_information, HPos.CENTER);
+
+    // Creating a scene object.
+    Scene scene = new Scene(grid_pane_root);
+
+    // Adding the scene to the stage.
+    primary_stage.setScene(scene);
+
+    // Displaying the contents of the stage.
+    primary_stage.show();

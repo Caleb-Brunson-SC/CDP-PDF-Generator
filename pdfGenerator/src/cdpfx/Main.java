@@ -1,38 +1,60 @@
 package cdpfx;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-  private Parent createContent() {
-    Rectangle box = new Rectangle(100, 50, Color.BLUE);
-
-    transform(box);
-
-    return new Pane(box);
-  }
-
-  private void transform(Rectangle box) {
-    box.setTranslateX(100);
-    box.setTranslateY(200);
-
-    box.setScaleX(1.5);
-    box.setScaleY(1.5);
-    box.setRotate(30);
-  }
-
   @Override
-  public void start(Stage stage) throws Exception {
-    stage.setScene(new Scene(createContent(), 300, 300));
-    stage.show();
+  public void start(Stage primary_stage) throws Exception {
+    // Creating a VBox as the root.
+    VBox vbox_root = new VBox(5); // 5 is spacing between children
+
+    // Setting the padding of the VBox.
+    vbox_root.setPadding(new Insets(5));
+
+    // Creating Hbox and text for program, company, and developer information.
+    HBox program_title = new HBox();
+    Text text_program_title = new Text();
+    text_program_title.setText("Proposal for Fencing Installation");
+    text_program_title.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 25));
+    program_title.getChildren().add(text_program_title);
+    program_title.setAlignment(Pos.CENTER);
+
+    HBox program_information = new HBox();
+    Text text_program_information = new Text();
+    text_program_information.setText("Program developed for CDP Fencing by Caleb Brunson (Github: Caleb-Brunson-SC).");
+    text_program_information.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 15));
+    program_information.getChildren().add(text_program_information);
+    program_information.setAlignment(Pos.CENTER);
+
+    // Add all children to the VBox container (root).
+    vbox_root.getChildren().addAll(program_title, program_information);
+
+    // Creating a scene object.
+    Scene scene = new Scene(vbox_root, 700, 500);
+
+    // Adding the scene to the stage.
+    primary_stage.setScene(scene);
+
+    // Displaying the contents of the stage.
+    primary_stage.show();
+
   }
 
   public static void main(String[] args) {
