@@ -162,7 +162,7 @@ public class Main extends Application {
 
     // Text notice for cost fields and calculation.
     Text text_cost_calculation = new Text(
-        "Note: Contract Amount will be calculated from Materials Cost, Labor Cost, and Discount. Remaining Amount is equal to Contract Amount minus Deposit Amount.");
+        "Note: Contract Amount will be calculated from Materials Cost, Labor Cost, and Discount. Remaining Amount is equal to Contract Amount minus Deposit Amount. Enter costs as numerical values only.");
     text_cost_calculation.setFont(user_input_font);
     text_cost_calculation.setWrappingWidth(650);
 
@@ -204,18 +204,29 @@ public class Main extends Application {
     TextField text_field_deposit_amount = new TextField();
 
     // CDP Fencing Authorized Representative (print name).
-    Label label_authorized_rep_name = new Label("CDP Authorized Representative (full name)");
+    Label label_authorized_rep_name = new Label("CDP Authorized Representative's Full Name");
     label_authorized_rep_name.setFont(user_input_font);
     TextField text_field_authorized_rep_name = new TextField();
 
-    // Creating Button to open new Scene for signing name.
-    Label label_sign_authorized_rep_name = new Label("CDP Authorized Representative (signature)");
+    // Creating Button to open new Scene for signing CDP Represenative's name.
+    Label label_sign_authorized_rep_name = new Label("CDP Authorized Representative's Signature");
     label_sign_authorized_rep_name.setFont(user_input_font);
     Button button_sign_authorized_rep_name = new Button("Sign Name");
     button_sign_authorized_rep_name.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        createSignature();
+        createSignature(false);
+      }
+    });
+
+    // Creating Button to open new Scene for signing Customer's name.
+    Label label_sign_customer_name = new Label("Customer's Signature");
+    label_sign_customer_name.setFont(user_input_font);
+    Button button_sign_customer_name = new Button("Sign Name");
+    button_sign_customer_name.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        createSignature(true);
       }
     });
 
@@ -252,7 +263,8 @@ public class Main extends Application {
     grid_pane_two.addRow(4, label_deposit_amount, text_field_deposit_amount);
     grid_pane_two.addRow(5, label_authorized_rep_name, text_field_authorized_rep_name);
     grid_pane_two.addRow(6, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
-    grid_pane_two.addRow(7, label_create_pdf, button_create_pdf);
+    grid_pane_two.addRow(7, label_sign_customer_name, button_sign_customer_name);
+    grid_pane_two.addRow(8, label_create_pdf, button_create_pdf);
 
     // Add all children to the VBox_one layout.
     vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
@@ -287,7 +299,7 @@ public class Main extends Application {
     // Main.current_stage.close();
   }
 
-  public void createSignature() {
+  public void createSignature(Boolean isCustomer) {
     BorderPane root = new BorderPane();
 
     Stage signature_stage = new Stage();
