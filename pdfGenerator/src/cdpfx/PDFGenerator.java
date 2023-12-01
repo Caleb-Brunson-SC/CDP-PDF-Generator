@@ -100,7 +100,7 @@ public class PDFGenerator {
       pddocument_information.setCreator("Caleb Brunson");
 
       // Setting the subject of the document.
-      pddocument_information.setSubject("Example document");
+      pddocument_information.setSubject("CDP Fencing Contract");
 
       // Setting the created date of the document.
       pddocument_information.setCreationDate(Calendar.getInstance());
