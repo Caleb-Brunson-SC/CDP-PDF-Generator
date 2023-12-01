@@ -26,9 +26,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
   public static Stage current_stage;
   // Will need to set these in their respective methods.
-  public Boolean has_created_fence_diagram = false; // Default value.
-  public Boolean has_created_signature_cdp_authorized_rep = false; // Default dvalue.
-  public Boolean has_created_singature_customer = false; // Default value.
+  public Boolean has_created_fence_diagram = true; // Default value.
+  public Boolean has_created_signature_cdp_authorized_rep = true; // Default dvalue.
+  public Boolean has_created_singature_customer = true; // Default value.
+  public PDFGenerator generator = new PDFGenerator();
 
   @Override
   public void start(Stage primary_stage) throws Exception {
@@ -267,6 +268,12 @@ public class Main extends Application {
           return;
         }
 
+        // Set PDFGenerator values for attribute data.
+        generator.proposal_creation_date = text_field_proposal_creation_date.getText();
+
+        System.out.println(generator.toString());
+
+        // Alert user of success.
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.show();
       }
