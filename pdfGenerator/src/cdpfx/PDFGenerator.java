@@ -86,9 +86,73 @@ public class PDFGenerator {
       document.addPage(first_page);
 
       // Adding content to first page.
-      PDPageContentStream first_page_content_stream = new PDPageContentStream(document, first_page);
-      first_page_content_stream.beginText();
-      first_page_content_stream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 14);
+      PDPageContentStream content_stream = new PDPageContentStream(document, first_page);
+      content_stream.beginText();
+      content_stream.setFont(new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN), 14);
+      content_stream.setLeading(14.5f);
+      content_stream.newLineAtOffset(25, 200);
+
+      content_stream.showText(proposal_creation_date);
+      content_stream.newLine();
+
+      content_stream.showText(customer_first_name + " " + customer_last_name);
+      content_stream.newLine();
+
+      content_stream
+          .showText("Service Address, City, State, Zip, Municipality: " + service_address + " "
+              + service_address_city_state_zip + ", " + service_address_municipality);
+      content_stream.newLine();
+
+      content_stream.showText("Customer Email: " + customer_email_address);
+      content_stream.newLine();
+
+      content_stream.showText("Is Permit Required?: " + Boolean.toString(is_permit_required));
+      content_stream.newLine();
+
+      content_stream.showText("Is Homeowner to Obtain Permit?: " + Boolean.toString(is_homeowner_to_obtain_permit));
+      content_stream.newLine();
+
+      content_stream.showText("Is CDP Fencing to Obtain Permit?: " + Boolean.toString(is_cdp_fencing_to_obtain_permit));
+      content_stream.newLine();
+
+      content_stream.showText("Is Plot Plan or Survery Available?: " + Boolean.toString(is_plan_plot_survey_available));
+      content_stream.newLine();
+
+      content_stream.showText("Product Specifications: " + product_specifications);
+      content_stream.newLine();
+
+      content_stream.showText("Job Options: " + job_options);
+      content_stream.newLine();
+
+      content_stream.showText("Job Notes: " + job_notes);
+      content_stream.newLine();
+
+      content_stream.showText("Contract Amount: " + contract_amount);
+      content_stream.newLine();
+
+      content_stream.showText("Materials Cost: " + materials_cost);
+      content_stream.newLine();
+
+      content_stream.showText("Labor Cost: " + labor_cost);
+      content_stream.newLine();
+
+      content_stream.showText("Discount Percentage: " + discount_percentage + "%");
+      content_stream.newLine();
+
+      content_stream.showText("Sales Tax: $" + sales_tax);
+      content_stream.newLine();
+
+      content_stream.showText("Deposit Amount: $" + deposit_amount);
+      content_stream.newLine();
+
+      content_stream.showText("Remaining Balance: $" + remaining_balance);
+      content_stream.newLine();
+
+      content_stream.showText("CDP Authorized Representative: " + cdp_authorized_representative_name);
+      content_stream.newLine();
+
+      content_stream.endText();
+      content_stream.close();
 
       // Creating second page.
       PDPage second_page = new PDPage();
