@@ -90,7 +90,7 @@ public class PDFGenerator {
       content_stream.beginText();
       content_stream.setFont(new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN), 14);
       content_stream.setLeading(14.5f);
-      content_stream.newLineAtOffset(25, 200);
+      content_stream.newLineAtOffset(25, 800);
 
       content_stream.showText(proposal_creation_date);
       content_stream.newLine();
