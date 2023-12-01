@@ -26,7 +26,28 @@ public class PDFGenerator {
 
   // Creating default constructor with values of "none" instead of NULL.
   public PDFGenerator() {
-
+    this.proposal_creation_date = "none";
+    this.customer_first_name = "none";
+    this.customer_last_name = "none";
+    this.service_address = "none";
+    this.service_address_city_state_zip = "none";
+    this.service_address_municipality = "none";
+    this.customer_email_address = "none";
+    this.is_permit_required = false;
+    this.is_homeowner_to_obtain_permit = false;
+    this.is_cdp_fencing_to_obtain_permit = false;
+    this.is_plan_plot_survey_available = false;
+    this.product_specifications = "none";
+    this.job_options = "none";
+    this.job_notes = "none";
+    this.contract_amount = "none";
+    this.materials_cost = "none";
+    this.labor_cost = "none";
+    this.discount_percentage = "none";
+    this.sales_tax = "none";
+    this.deposit_amount = "none";
+    this.remaining_balance = "none";
+    this.cdp_authorized_representative_name = "none";
   }
 
   @Override
