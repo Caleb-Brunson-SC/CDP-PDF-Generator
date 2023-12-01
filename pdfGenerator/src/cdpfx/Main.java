@@ -164,7 +164,7 @@ public class Main extends Application {
 
     // Text notice for cost fields and calculation.
     Text text_cost_calculation = new Text(
-        "Note: Contract Amount will be calculated from Materials Cost, Labor Cost, and Discount. Remaining Amount is equal to Contract Amount minus Deposit Amount. Enter costs as numerical values only.");
+        "Note: Contract Amount is equal to the sum of Material Cost, Labor Cost, and Sales Tax subtracted by the Discount Percentage times the Labor Cost. Remaining Amount is equal to Contract Amount minus Deposit Amount. Enter data as numerical values only (i.e., no $ or , characters).");
     text_cost_calculation.setFont(user_input_font);
     text_cost_calculation.setWrappingWidth(650);
 
@@ -190,10 +190,10 @@ public class Main extends Application {
     label_labor_cost.setFont(user_input_font);
     TextField text_field_labor_cost = new TextField();
 
-    // Discount Applied
-    Label label_discount_applied = new Label("Discount Applied");
-    label_discount_applied.setFont(user_input_font);
-    TextField text_field_discount_applied = new TextField();
+    // Discount Percentage
+    Label label_discount_percentage = new Label("Discount Percentage");
+    label_discount_percentage.setFont(user_input_font);
+    TextField text_field_discount_percentage = new TextField();
 
     // Sales tax.
     Label label_sales_tax = new Label("Sales Tax");
@@ -268,12 +268,42 @@ public class Main extends Application {
           return;
         }
 
-        // Set PDFGenerator values for attribute data.
+        // Set generator values for attribute data.
         generator.proposal_creation_date = text_field_proposal_creation_date.getText();
+        generator.customer_first_name = text_field_customer_first_name.getText();
+        generator.customer_last_name = text_field_customer_last_name.getText();
+        generator.service_address = text_field_service_address.getText();
+        generator.service_address_city_state_zip = text_field_service_address_city_state_zip.getText();
+        generator.service_address_municipality = text_field_service_address_municipality.getText();
+        generator.customer_email_address = text_field_customer_email.getText();
+        generator.is_permit_required = checkbox_permit_required.isSelected();
+        generator.is_homeowner_to_obtain_permit = checkbox_homeowner_permit.isSelected();
+        generator.is_cdp_fencing_to_obtain_permit = checkbox_cdp_permit.isSelected();
+        generator.is_plan_plot_survey_available = checkbox_plot_survey_available.isSelected();
+        generator.product_specifications = text_area_product_specifications.getText();
+        generator.job_options = text_area_job_options.getText();
+        generator.job_notes = text_area_job_notes.getText();
+        generator.cdp_authorized_representative_name = text_field_authorized_rep_name.getText();
+
+        // Converting cost values from String to Double data types.
+        Double materials_cost = Double.parseDouble(text_field_materials_cost.getText());
+        Double labor_cost = Double.parseDouble(text_field_labor_cost.getText());
+        Double discount_percentage = Double.parseDouble(text_field_discount_percentage.getText());
+        Double sales_tax = Double.parseDouble(text_field_sales_tax.getText());
+        Double deposit_amount = Double.parseDouble(text_field_deposit_amount.getText());
+
+        // Calculating Contract Amount and Remaining Balance
+        Double contract_amount = ((materials_cost + labor_cost + sales_tax)
+            - (labor_cost * discount_percentage / 100));
+        Double remaining_balance = (contract_amount - deposit_amount);
+
+        // Setting generator cost values.
+        generator.contract_amount = Double.toString(contract_amount);
+        generator.materials_cost = Double.toString(materials_cost);
 
         System.out.println(generator.toString());
 
-        // Alert user of success.
+        // Alerting user of success.
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.show();
       }
@@ -282,7 +312,7 @@ public class Main extends Application {
     // Adding rows to the second grid pane.
     grid_pane_two.addRow(0, label_materials_cost, text_field_materials_cost);
     grid_pane_two.addRow(1, label_labor_cost, text_field_labor_cost);
-    grid_pane_two.addRow(2, label_discount_applied, text_field_discount_applied);
+    grid_pane_two.addRow(2, label_discount_percentage, text_field_discount_percentage);
     grid_pane_two.addRow(3, label_sales_tax, text_field_sales_tax);
     grid_pane_two.addRow(4, label_deposit_amount, text_field_deposit_amount);
     grid_pane_two.addRow(5, label_authorized_rep_name, text_field_authorized_rep_name);

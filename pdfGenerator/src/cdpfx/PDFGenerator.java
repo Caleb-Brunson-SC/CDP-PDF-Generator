@@ -18,11 +18,16 @@ public class PDFGenerator {
   public String contract_amount;
   public String materials_cost;
   public String labor_cost;
-  public String discount_applied;
+  public String discount_percentage;
   public String sales_tax;
   public String deposit_amount;
   public String remaining_balance;
   public String cdp_authorized_representative_name;
+
+  // Creating default constructor with values of "none" instead of NULL.
+  public PDFGenerator() {
+
+  }
 
   @Override
   public String toString() {
@@ -34,7 +39,8 @@ public class PDFGenerator {
         + ", is_cdp_fencing_to_obtain_permit=" + is_cdp_fencing_to_obtain_permit + ", is_plan_plot_survey_available="
         + is_plan_plot_survey_available + ", product_specifications=" + product_specifications + ", job_options="
         + job_options + ", job_notes=" + job_notes + ", contract_amount=" + contract_amount + ", materials_cost="
-        + materials_cost + ", labor_cost=" + labor_cost + ", discount_applied=" + discount_applied + ", sales_tax="
+        + materials_cost + ", labor_cost=" + labor_cost + ", discount_percentage=" + discount_percentage
+        + ", sales_tax="
         + sales_tax + ", deposit_amount=" + deposit_amount + ", remaining_balance=" + remaining_balance
         + ", cdp_authorized_representative_name=" + cdp_authorized_representative_name + "]";
   }
