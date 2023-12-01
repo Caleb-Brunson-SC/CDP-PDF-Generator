@@ -1,12 +1,13 @@
 package cdpfx;
 
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 public class PDFGenerator {
   public String proposal_creation_date;
@@ -80,12 +81,34 @@ public class PDFGenerator {
       PDDocument document = new PDDocument();
 
       // Creating page objects.
-      for (int i = 0; i < 6; i++) {
-        PDPage blankPage = new PDPage();
+      // Creating first page.
+      PDPage first_page = new PDPage();
+      document.addPage(first_page);
 
-        // Adding page object to document object.
-        document.addPage(blankPage);
-      }
+      // Adding content to first page.
+      PDPageContentStream first_page_content_stream = new PDPageContentStream(document, first_page);
+      first_page_content_stream.beginText();
+      first_page_content_stream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 14);
+
+      // Creating second page.
+      PDPage second_page = new PDPage();
+      document.addPage(second_page);
+
+      // Creating third page.
+      PDPage third_page = new PDPage();
+      document.addPage(third_page);
+
+      // Creating fourth page.
+      PDPage fourth_page = new PDPage();
+      document.addPage(fourth_page);
+
+      // Creating fifth page.
+      PDPage fifth_page = new PDPage();
+      document.addPage(fifth_page);
+
+      // Creating sixth page.
+      PDPage sixth_page = new PDPage();
+      document.addPage(sixth_page);
 
       // Creating the PDDocumentInformation object.
       PDDocumentInformation pddocument_information = document.getDocumentInformation();
