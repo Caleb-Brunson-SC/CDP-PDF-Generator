@@ -24,4 +24,19 @@ public class PDFGenerator {
   public String remaining_balance;
   public String cdp_authorized_representative_name;
 
+  @Override
+  public String toString() {
+    return "PDFGenerator [proposal_creation_date=" + proposal_creation_date + ", customer_first_name="
+        + customer_first_name + ", customer_last_name=" + customer_last_name + ", service_address=" + service_address
+        + ", service_address_city_state_zip=" + service_address_city_state_zip + ", service_address_municipality="
+        + service_address_municipality + ", customer_email_address=" + customer_email_address + ", is_permit_required="
+        + is_permit_required + ", is_homeowner_to_obtain_permit=" + is_homeowner_to_obtain_permit
+        + ", is_cdp_fencing_to_obtain_permit=" + is_cdp_fencing_to_obtain_permit + ", is_plan_plot_survey_available="
+        + is_plan_plot_survey_available + ", product_specifications=" + product_specifications + ", job_options="
+        + job_options + ", job_notes=" + job_notes + ", contract_amount=" + contract_amount + ", materials_cost="
+        + materials_cost + ", labor_cost=" + labor_cost + ", discount_applied=" + discount_applied + ", sales_tax="
+        + sales_tax + ", deposit_amount=" + deposit_amount + ", remaining_balance=" + remaining_balance
+        + ", cdp_authorized_representative_name=" + cdp_authorized_representative_name + "]";
+  }
+
 }
