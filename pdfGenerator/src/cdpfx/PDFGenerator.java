@@ -79,11 +79,13 @@ public class PDFGenerator {
       // Creating PDF document object.
       PDDocument document = new PDDocument();
 
-      // Creating page object.
-      PDPage blankPage = new PDPage();
+      // Creating page objects.
+      for (int i = 0; i < 6; i++) {
+        PDPage blankPage = new PDPage();
 
-      // Adding page object to document object.
-      document.addPage(blankPage);
+        // Adding page object to document object.
+        document.addPage(blankPage);
+      }
 
       // Creating the PDDocumentInformation object.
       PDDocumentInformation pddocument_information = document.getDocumentInformation();
