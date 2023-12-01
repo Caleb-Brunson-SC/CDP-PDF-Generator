@@ -164,7 +164,7 @@ public class Main extends Application {
 
     // Text notice for cost fields and calculation.
     Text text_cost_calculation = new Text(
-        "Note: Contract Amount is equal to the sum of Material Cost, Labor Cost, and Sales Tax subtracted by the Discount Percentage times the Labor Cost. Remaining Amount is equal to Contract Amount minus Deposit Amount. Enter data as numerical values only (i.e., no $ or , characters).");
+        "Note: Contract Amount is equal to the sum of Material Cost, Labor Cost, and Sales Tax subtracted by the Discount Percentage times the Labor Cost. Remaining Amount is equal to Contract Amount minus Deposit Amount. Enter data as numerical values only (do not include '$' ',' '%' characters).");
     text_cost_calculation.setFont(user_input_font);
     text_cost_calculation.setWrappingWidth(650);
 
