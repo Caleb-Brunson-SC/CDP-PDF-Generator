@@ -1,7 +1,12 @@
 package cdpfx;
 
-import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+import org.apache.pdfbox.pdmodel.PDPage;
 
 public class PDFGenerator {
   public String proposal_creation_date;
@@ -74,8 +79,33 @@ public class PDFGenerator {
       // Creating PDF document object
       PDDocument document = new PDDocument();
 
+      // Creating page object
+      PDPage blankPage = new PDPage();
+
+      // Adding page object to document object
+      document.addPage(blankPage);
+
+      // Creating the PDDocumentInformation object
+      PDDocumentInformation pddocument_information = document.getDocumentInformation();
+
+      // Setting the author of the document
+      pddocument_information.setAuthor("CDP Fencing");
+
+      // Setting the title of the document
+      pddocument_information.setTitle(customer_last_name + "_" + customer_first_name + "_contract");
+
+      // Setting the creator of the document
+      pddocument_information.setCreator("Caleb Brunson");
+
+      // Setting the subject of the document
+      pddocument_information.setSubject("Example document");
+
+      // Setting the created date of the document
+      pddocument_information.setCreationDate(Calendar.getInstance());
+
       // Saving the document
-      document.save("C:\\Users\\caleb\\OneDrive\\Desktop\\Physiology Game\\testdoc.pdf");
+      document
+          .save("C:\\Users\\caleb\\OneDrive\\Desktop\\Physiology Game\\" + pddocument_information.getTitle() + ".pdf");
 
       System.out.println("PDF created");
 
