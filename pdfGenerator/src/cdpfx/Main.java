@@ -310,14 +310,12 @@ public class Main extends Application {
           e.printStackTrace();
         }
 
-        // Test print
-        System.out.println(generator.toString());
-
         // Call createFilePDF method from PDFGenerator class through generator.
         generator.createFilePDF();
 
         // Alerting user of success.
         Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText("PDF file created.");
         alert.show();
       }
     });

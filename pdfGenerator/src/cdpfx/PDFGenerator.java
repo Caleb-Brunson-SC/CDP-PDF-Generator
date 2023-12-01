@@ -76,40 +76,40 @@ public class PDFGenerator {
 
   public void createFilePDF() {
     try {
-      // Creating PDF document object
+      // Creating PDF document object.
       PDDocument document = new PDDocument();
 
-      // Creating page object
+      // Creating page object.
       PDPage blankPage = new PDPage();
 
-      // Adding page object to document object
+      // Adding page object to document object.
       document.addPage(blankPage);
 
-      // Creating the PDDocumentInformation object
+      // Creating the PDDocumentInformation object.
       PDDocumentInformation pddocument_information = document.getDocumentInformation();
 
-      // Setting the author of the document
+      // Setting the author of the document.
       pddocument_information.setAuthor("CDP Fencing");
 
-      // Setting the title of the document
+      // Setting the title of the document.
       pddocument_information.setTitle(customer_last_name + "_" + customer_first_name + "_contract");
 
-      // Setting the creator of the document
+      // Setting the creator of the document.
       pddocument_information.setCreator("Caleb Brunson");
 
-      // Setting the subject of the document
+      // Setting the subject of the document.
       pddocument_information.setSubject("Example document");
 
-      // Setting the created date of the document
+      // Setting the created date of the document.
       pddocument_information.setCreationDate(Calendar.getInstance());
 
-      // Saving the document
+      // Saving the document.
       document
           .save("C:\\Users\\caleb\\OneDrive\\Desktop\\Physiology Game\\" + pddocument_information.getTitle() + ".pdf");
 
       System.out.println("PDF created");
 
-      // Closing the document
+      // Closing the document.
       document.close();
     } catch (Exception e) {
       e.printStackTrace();
