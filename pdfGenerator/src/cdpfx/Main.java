@@ -26,9 +26,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
   public static Stage current_stage;
   // Will need to set these in their respective methods.
-  public Boolean has_created_fence_diagram = true; // Default value.
-  public Boolean has_created_signature_cdp_authorized_rep = true; // Default dvalue.
-  public Boolean has_created_singature_customer = true; // Default value.
+  public Boolean has_created_fence_diagram = false; // Default value.
+  public Boolean has_created_signature_cdp_authorized_rep = false; // Default dvalue.
+  public Boolean has_created_singature_customer = false; // Default value.
   public PDFGenerator generator = new PDFGenerator();
 
   @Override
