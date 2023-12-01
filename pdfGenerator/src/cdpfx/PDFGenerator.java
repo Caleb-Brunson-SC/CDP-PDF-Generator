@@ -1,5 +1,8 @@
 package cdpfx;
 
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+
 public class PDFGenerator {
   public String proposal_creation_date;
   public String customer_first_name;
@@ -64,6 +67,23 @@ public class PDFGenerator {
         + ", sales_tax="
         + sales_tax + ", deposit_amount=" + deposit_amount + ", remaining_balance=" + remaining_balance
         + ", cdp_authorized_representative_name=" + cdp_authorized_representative_name + "]";
+  }
+
+  public void createFilePDF() {
+    try {
+      // Creating PDF document object
+      PDDocument document = new PDDocument();
+
+      // Saving the document
+      document.save("C:\\Users\\caleb\\OneDrive\\Desktop\\Physiology Game\\testdoc.pdf");
+
+      System.out.println("PDF created");
+
+      // Closing the document
+      document.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
 }
