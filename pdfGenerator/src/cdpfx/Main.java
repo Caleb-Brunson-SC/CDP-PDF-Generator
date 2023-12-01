@@ -300,6 +300,11 @@ public class Main extends Application {
         // Setting generator cost values.
         generator.contract_amount = Double.toString(contract_amount);
         generator.materials_cost = Double.toString(materials_cost);
+        generator.labor_cost = Double.toString(labor_cost);
+        generator.discount_percentage = Double.toString(discount_percentage);
+        generator.sales_tax = Double.toString(sales_tax);
+        generator.deposit_amount = Double.toString(deposit_amount);
+        generator.remaining_balance = Double.toString(remaining_balance);
 
         System.out.println(generator.toString());
 
