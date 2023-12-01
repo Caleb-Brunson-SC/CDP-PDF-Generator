@@ -286,25 +286,29 @@ public class Main extends Application {
         generator.cdp_authorized_representative_name = text_field_authorized_rep_name.getText();
 
         // Converting cost values from String to Double data types.
-        Double materials_cost = Double.parseDouble(text_field_materials_cost.getText());
-        Double labor_cost = Double.parseDouble(text_field_labor_cost.getText());
-        Double discount_percentage = Double.parseDouble(text_field_discount_percentage.getText());
-        Double sales_tax = Double.parseDouble(text_field_sales_tax.getText());
-        Double deposit_amount = Double.parseDouble(text_field_deposit_amount.getText());
+        try {
+          Double materials_cost = Double.parseDouble(text_field_materials_cost.getText());
+          Double labor_cost = Double.parseDouble(text_field_labor_cost.getText());
+          Double discount_percentage = Double.parseDouble(text_field_discount_percentage.getText());
+          Double sales_tax = Double.parseDouble(text_field_sales_tax.getText());
+          Double deposit_amount = Double.parseDouble(text_field_deposit_amount.getText());
 
-        // Calculating Contract Amount and Remaining Balance
-        Double contract_amount = ((materials_cost + labor_cost + sales_tax)
-            - (labor_cost * discount_percentage / 100));
-        Double remaining_balance = (contract_amount - deposit_amount);
+          // Calculating Contract Amount and Remaining Balance
+          Double contract_amount = ((materials_cost + labor_cost + sales_tax)
+              - (labor_cost * discount_percentage / 100));
+          Double remaining_balance = (contract_amount - deposit_amount);
 
-        // Setting generator cost values.
-        generator.contract_amount = Double.toString(contract_amount);
-        generator.materials_cost = Double.toString(materials_cost);
-        generator.labor_cost = Double.toString(labor_cost);
-        generator.discount_percentage = Double.toString(discount_percentage);
-        generator.sales_tax = Double.toString(sales_tax);
-        generator.deposit_amount = Double.toString(deposit_amount);
-        generator.remaining_balance = Double.toString(remaining_balance);
+          // Setting generator cost values.
+          generator.contract_amount = Double.toString(contract_amount);
+          generator.materials_cost = Double.toString(materials_cost);
+          generator.labor_cost = Double.toString(labor_cost);
+          generator.discount_percentage = Double.toString(discount_percentage);
+          generator.sales_tax = Double.toString(sales_tax);
+          generator.deposit_amount = Double.toString(deposit_amount);
+          generator.remaining_balance = Double.toString(remaining_balance);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
 
         System.out.println(generator.toString());
 
