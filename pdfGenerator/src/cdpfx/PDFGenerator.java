@@ -181,7 +181,8 @@ public class PDFGenerator {
       pddocument_information.setAuthor("CDP Fencing");
 
       // Setting the title of the document.
-      pddocument_information.setTitle(customer_last_name + "_" + customer_first_name + "_contract");
+      pddocument_information
+          .setTitle(customer_last_name + "_" + customer_first_name + "_contract_" + proposal_creation_date);
 
       // Setting the creator of the document.
       pddocument_information.setCreator("Caleb Brunson");
