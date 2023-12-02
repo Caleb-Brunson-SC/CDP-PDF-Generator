@@ -164,7 +164,7 @@ public class Main extends Application {
 
     // Text notice for cost fields and calculation.
     Text text_cost_calculation = new Text(
-        "Note: Contract Amount is equal to the sum of Material Cost, Labor Cost, and Sales Tax subtracted by the Discount Percentage times the Labor Cost. Remaining Amount is equal to Contract Amount minus Deposit Amount. Enter data as numerical values only (do not include '$' ',' '%' characters).");
+        "Note: Contract Amount is equal to the sum of Material Cost, Labor Cost, and Sales Tax subtracted by the Discount Percentage times the Labor Cost. Remaining Amount is equal to Contract Amount minus the Deposit Amount which is the same as Materials Cost. Enter data as numerical values only (do not include '$' ',' '%' characters).");
     text_cost_calculation.setFont(user_input_font);
     text_cost_calculation.setWrappingWidth(650);
 
@@ -199,11 +199,6 @@ public class Main extends Application {
     Label label_sales_tax = new Label("Sales Tax");
     label_sales_tax.setFont(user_input_font);
     TextField text_field_sales_tax = new TextField();
-
-    // Deposit amount.
-    Label label_deposit_amount = new Label("Deposit Amount");
-    label_deposit_amount.setFont(user_input_font);
-    TextField text_field_deposit_amount = new TextField();
 
     // CDP Fencing Authorized Representative (print name).
     Label label_authorized_rep_name = new Label("CDP Authorized Representative's Full Name");
@@ -291,7 +286,7 @@ public class Main extends Application {
           Double labor_cost = Double.parseDouble(text_field_labor_cost.getText());
           Double discount_percentage = Double.parseDouble(text_field_discount_percentage.getText());
           Double sales_tax = Double.parseDouble(text_field_sales_tax.getText());
-          Double deposit_amount = Double.parseDouble(text_field_deposit_amount.getText());
+          Double deposit_amount = materials_cost;
 
           // Calculating Contract Amount and Remaining Balance
           Double contract_amount = ((materials_cost + labor_cost + sales_tax)
@@ -325,11 +320,10 @@ public class Main extends Application {
     grid_pane_two.addRow(1, label_labor_cost, text_field_labor_cost);
     grid_pane_two.addRow(2, label_discount_percentage, text_field_discount_percentage);
     grid_pane_two.addRow(3, label_sales_tax, text_field_sales_tax);
-    grid_pane_two.addRow(4, label_deposit_amount, text_field_deposit_amount);
-    grid_pane_two.addRow(5, label_authorized_rep_name, text_field_authorized_rep_name);
-    grid_pane_two.addRow(6, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
-    grid_pane_two.addRow(7, label_sign_customer_name, button_sign_customer_name);
-    grid_pane_two.addRow(8, label_create_pdf, button_create_pdf);
+    grid_pane_two.addRow(4, label_authorized_rep_name, text_field_authorized_rep_name);
+    grid_pane_two.addRow(5, label_sign_authorized_rep_name, button_sign_authorized_rep_name);
+    grid_pane_two.addRow(6, label_sign_customer_name, button_sign_customer_name);
+    grid_pane_two.addRow(7, label_create_pdf, button_create_pdf);
 
     // Add all children to the VBox_one layout.
     vbox_one.getChildren().addAll(program_title, developer_information, program_information, grid_pane_one, vbox_two,
