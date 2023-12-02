@@ -25,10 +25,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
   public static Stage current_stage;
-  // Will need to set these in their respective methods.
-  public Boolean has_created_fence_diagram = false; // Default value.
-  public Boolean has_created_signature_cdp_authorized_rep = false; // Default dvalue.
-  public Boolean has_created_singature_customer = false; // Default value.
   public PDFGenerator generator = new PDFGenerator();
 
   @Override
@@ -234,35 +230,6 @@ public class Main extends Application {
     button_create_pdf.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        /*
-         * Checking if a fence diagram, CDP authorized representative's signature, or a
-         * customer's signature has been created.
-         */
-        if (!has_created_fence_diagram || !has_created_signature_cdp_authorized_rep
-            || !has_created_singature_customer) {
-          // Checking if fence diagram has been created.
-          if (!has_created_fence_diagram) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("A Fence Diagram has not been created.");
-            alert.show();
-          }
-          // Checking if CDP authorized representative's signature has been created.
-          if (!has_created_signature_cdp_authorized_rep) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("A CDP Authorized Representative's Signature has not been created.");
-            alert.show();
-          }
-          // Checking if Customer's signature has been created
-          if (!has_created_singature_customer) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("A Customer's Signature has not been created.");
-            alert.show();
-          }
-
-          // Exiting the method.
-          return;
-        }
-
         // Set generator values for attribute data.
         generator.proposal_creation_date = text_field_proposal_creation_date.getText();
         generator.customer_first_name = text_field_customer_first_name.getText();
