@@ -181,8 +181,14 @@ public class PDFGenerator {
       pddocument_information.setAuthor("CDP Fencing");
 
       // Setting the title of the document.
+      // Getting Day, Month, and Year information to build date
+      int current_day = Calendar.getInstance().get(Calendar.DATE);
+      int current_month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+      int current_year = Calendar.getInstance().get(Calendar.YEAR);
+
       pddocument_information
-          .setTitle(customer_last_name + "_" + customer_first_name + "_contract_" + proposal_creation_date);
+          .setTitle(customer_last_name + "_" + customer_first_name + "_contract_" + current_month + "-"
+              + current_day + "-" + current_year);
 
       // Setting the creator of the document.
       pddocument_information.setCreator("Caleb Brunson");
